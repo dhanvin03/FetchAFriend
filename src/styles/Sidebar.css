@@ -1,0 +1,96 @@
+.sidebar {
+  width: 25%;
+  min-width: 210px;
+  height: 100vh;
+  padding: 20px;
+  background-color: #FFA900;
+  border-radius: 10px;
+}
+
+.breed-select,
+.sort-by,
+.zip-code {
+  border-bottom: 1px solid #363636;
+}
+
+.breed-select select,
+.sort-by button,
+.zip-code input {
+  margin-bottom: 30px;
+}
+
+.breed-select label,
+.sort-by p,
+.favorites,
+.zip-code label {
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: auto;
+}
+
+.sidebar select,
+.sort-by button,
+.favorites button,
+.zip-code input {
+  width: 100%;
+  margin-top: 10px;
+  height: 40px;
+  border-radius: 10px;
+  font-size: 1em;
+  padding: 0px 16px;
+  color: #ffffff;
+  font-weight: bold;
+  background: #537fa4;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  box-shadow: 0 2px 2px 0px rgba(0, 0, 0, 0.2);
+}
+
+.sort-by,
+.favorites,
+.zip-code {
+  margin-top: 20px;
+}
+
+.zip-code input::placeholder {
+  color: #ffffff;
+}
+
+.favorites-title {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.favorites ul p {
+  font-size: medium;
+  font-weight: normal;
+}
+
+.favorites-title .heart {
+  color: #ff0000;
+}
+
+.favorites .liked-pets {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: medium;
+  font-weight: normal;
+  list-style: none;
+  margin: 10px 0;
+}
+
+.favorites .liked-pets .trash {
+  font-size: small;
+  cursor: pointer;
+}
+
+.favorites button {
+  margin-top: 30px;
+}
+
+.favorites button:hover {
+  background-color: #ff0000;
+}
