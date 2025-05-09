@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/FetchAFriend/static/css/main.78acb015.css",
-    "main.js": "/FetchAFriend/static/js/main.4cdc71ec.js",
+    "main.css": "/FetchAFriend/static/css/main.a3c0ff50.css",
+    "main.js": "/FetchAFriend/static/js/main.9f2120c8.js",
     "static/js/453.c92c3468.chunk.js": "/FetchAFriend/static/js/453.c92c3468.chunk.js",
     "static/media/dog-portrait.jpg": "/FetchAFriend/static/media/dog-portrait.00cb960ece7087689d73.jpg",
     "static/media/fetch-logo.png": "/FetchAFriend/static/media/fetch-logo.dd8ce58d83c1fe33f01f.png",
     "index.html": "/FetchAFriend/index.html",
-    "main.78acb015.css.map": "/FetchAFriend/static/css/main.78acb015.css.map",
-    "main.4cdc71ec.js.map": "/FetchAFriend/static/js/main.4cdc71ec.js.map",
+    "main.a3c0ff50.css.map": "/FetchAFriend/static/css/main.a3c0ff50.css.map",
+    "main.9f2120c8.js.map": "/FetchAFriend/static/js/main.9f2120c8.js.map",
     "453.c92c3468.chunk.js.map": "/FetchAFriend/static/js/453.c92c3468.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.78acb015.css",
-    "static/js/main.4cdc71ec.js"
+    "static/css/main.a3c0ff50.css",
+    "static/js/main.9f2120c8.js"
   ]
 }
