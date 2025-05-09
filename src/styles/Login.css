@@ -1,9 +1,3 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 .hero {
     height: 100vh;
     position: relative;
@@ -71,6 +65,7 @@
     border-radius: 10px;
     cursor: pointer;
     background: #537fa4;
+    box-shadow: 0 2px 2px 0px rgba(0, 0, 0, 0.2);
 }
 
 .login-btn:hover {

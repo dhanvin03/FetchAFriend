@@ -22,13 +22,11 @@ const Login = () => {
     setError('');
 
     try {
-      const response = await axios.post('https://frontend-take-home-service.fetch.com/auth/login', formData, {
+      await axios.post('https://frontend-take-home-service.fetch.com/auth/login', formData, {
         withCredentials: true,
       });
 
-      console.log(response);
       navigate('/dogsearch');
-
     } catch (error) {
       console.error('Login failed', error);
       setError('Login failed. Please provide valid credentials and try again.');
