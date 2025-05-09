@@ -1,7 +1,35 @@
+import axios from 'axios';
 import '../styles/Sidebar.css';
-import { FaHeart } from "react-icons/fa";
+import { FaHeart, FaTrash } from "react-icons/fa";
 
-const Sidebar = ({ breeds, selectedBreed, setSelectedBreed, sortOrder, setSortOrder }) => {
+const Sidebar = ({ breeds, selectedBreed, setSelectedBreed, sortOrder,
+  setSortOrder, likedDogs, setLikedDogs, setMatchedDogId }) => {
+
+  // Remove dog from the favorite list
+  const removeFavorite = (dogId) => {
+    setLikedDogs((prev) =>
+      prev.filter((dog) => dog.id !== dogId)
+    );
+  };
+
+  // Get a matched dog based on the dogs added to favorite list
+  const handleDogMatch = async () => {
+    try {
+      if (likedDogs.length === 0) {
+        alert('Select at least one dog to find a match!');
+        return;
+      }
+
+      const matchedDog = await axios.post('https://frontend-take-home-service.fetch.com/dogs/match',
+        likedDogs.map((dog) => dog.id), {
+        withCredentials: true,
+      });
+
+      setMatchedDogId(matchedDog.data.match);
+    } catch (error) {
+      console.error('Failed to match a dog', error);
+    }
+  };
 
   return (
     <aside className="sidebar">
@@ -25,11 +53,21 @@ const Sidebar = ({ breeds, selectedBreed, setSelectedBreed, sortOrder, setSortOr
       <div className="favorites">
         <div className="favorites-title">
           <p>Favorites</p>
-          <FaHeart className="heart" />
+          <FaHeart className='heart' />
         </div>
-        <button>Match</button>
+        <ul>
+          {likedDogs.length === 0 ?
+            <p>No favorites</p> :
+            (likedDogs.map((dog) => (
+              <li key={dog.id} className='liked-pets'>
+                <p>{dog.name} - <small>{dog.breed}</small></p>
+                <FaTrash className='trash' onClick={() => removeFavorite(dog.id)} />
+              </li>
+            )))
+          }
+        </ul>
+        <button onClick={handleDogMatch}>Match</button>
       </div>
-
     </aside>
   );
 };

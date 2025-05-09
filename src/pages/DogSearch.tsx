@@ -5,6 +5,7 @@ import DogList from '../components/DogList';
 import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
 import '../styles/DogSearch.css';
+import MatchedDogModal from '../components/MatchedDogModal';
 
 const DogSearch = () => {
   const navigate = useNavigate();
@@ -14,6 +15,10 @@ const DogSearch = () => {
   const [nextPage, setNextPage] = useState('');
   const [previousPage, setPreviousPage] = useState('');
   const [sortOrder, setSortOrder] = useState('breed:asc');
+  const [likedDogs, setLikedDogs] = useState([]);
+  const [matchedDog, setMatchedDog] = useState(null);
+  const [matchedDogId, setMatchedDogId] = useState(null);
+  const [showModal, setShowModal] = useState(false);
 
   // Get all dog breeds
   useEffect(() => {
@@ -36,12 +41,13 @@ const DogSearch = () => {
     fetchDogIds('');
   }, [sortOrder, selectedBreed]);
 
+  // Get all dog ids
   const fetchDogIds = async (page: string) => {
     try {
       const breed = selectedBreed ? `breeds=${selectedBreed}` : '';
       const apiUrl = page ? `https://frontend-take-home-service.fetch.com${page}`
         : `https://frontend-take-home-service.fetch.com/dogs/search?size=25&${breed}&sort=${sortOrder}`
-      
+
       const dogs = await axios.get(apiUrl, {
         withCredentials: true,
       });
@@ -54,6 +60,29 @@ const DogSearch = () => {
     }
   };
 
+  // Get the matched dog details
+  useEffect(() => {
+    const fetchMatchedDog = async () => {
+      if (!matchedDogId) {
+        return;
+      }
+
+      try {
+        const perfectMatch = await axios.post('https://frontend-take-home-service.fetch.com/dogs', [matchedDogId], {
+          withCredentials: true,
+        });
+
+        setMatchedDog(perfectMatch.data[0]);
+        setShowModal(true);
+      } catch (error) {
+        console.error('Failed to fetch matched dog', error);
+      }
+    };
+
+    fetchMatchedDog();
+  }, [matchedDogId]);
+
+  // Logout the user
   const handleLogout = async () => {
     try {
       await axios.post('https://frontend-take-home-service.fetch.com/auth/logout', {}, {
@@ -61,7 +90,6 @@ const DogSearch = () => {
       });
 
       navigate('/');
-
     } catch (error) {
       console.error('Logout failed', error);
     }
@@ -78,10 +106,15 @@ const DogSearch = () => {
           setSelectedBreed={setSelectedBreed}
           sortOrder={sortOrder}
           setSortOrder={setSortOrder}
+          likedDogs={likedDogs}
+          setLikedDogs={setLikedDogs}
+          setMatchedDogId={setMatchedDogId}
         />
 
+        {showModal && <MatchedDogModal matchedDog={matchedDog} closeModal={() => setShowModal(false)} />}
+
         <div className='dog-list-wrapper'>
-          <DogList dogIds={dogIds} />
+          <DogList dogIds={dogIds} likedDogs={likedDogs} setLikedDogs={setLikedDogs} />
           <div className='pagination-btn-wrapper'>
             <button
               onClick={() => fetchDogIds(previousPage)}
