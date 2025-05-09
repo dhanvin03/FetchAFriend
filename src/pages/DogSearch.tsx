@@ -19,6 +19,7 @@ const DogSearch = () => {
   const [matchedDog, setMatchedDog] = useState(null);
   const [matchedDogId, setMatchedDogId] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [zipCode, setZipCode] = useState('');
 
   // Get all dog breeds
   useEffect(() => {
@@ -39,14 +40,15 @@ const DogSearch = () => {
 
   useEffect(() => {
     fetchDogIds('');
-  }, [sortOrder, selectedBreed]);
+  }, [sortOrder, selectedBreed, zipCode ?? '']);
 
   // Get all dog ids
   const fetchDogIds = async (page: string) => {
     try {
       const breed = selectedBreed ? `breeds=${selectedBreed}` : '';
+      const urlZipCode = zipCode ? `zipCodes=${zipCode}` : '';
       const apiUrl = page ? `https://frontend-take-home-service.fetch.com${page}`
-        : `https://frontend-take-home-service.fetch.com/dogs/search?size=25&${breed}&sort=${sortOrder}`
+        : `https://frontend-take-home-service.fetch.com/dogs/search?size=25&${breed}&${urlZipCode}&sort=${sortOrder}`
 
       const dogs = await axios.get(apiUrl, {
         withCredentials: true,
@@ -109,6 +111,8 @@ const DogSearch = () => {
           likedDogs={likedDogs}
           setLikedDogs={setLikedDogs}
           setMatchedDogId={setMatchedDogId}
+          zipCode={zipCode}
+          setZipCode={setZipCode}
         />
 
         {showModal && <MatchedDogModal matchedDog={matchedDog} closeModal={() => setShowModal(false)} />}

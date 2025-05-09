@@ -3,7 +3,7 @@ import '../styles/Sidebar.css';
 import { FaHeart, FaTrash } from "react-icons/fa";
 
 const Sidebar = ({ breeds, selectedBreed, setSelectedBreed, sortOrder,
-  setSortOrder, likedDogs, setLikedDogs, setMatchedDogId }) => {
+  setSortOrder, likedDogs, setLikedDogs, setMatchedDogId, zipCode, setZipCode }) => {
 
   // Remove dog from the favorite list
   const removeFavorite = (dogId) => {
@@ -44,10 +44,16 @@ const Sidebar = ({ breeds, selectedBreed, setSelectedBreed, sortOrder,
       </div>
 
       <div className="sort-by">
-        <p>Sort By:</p>
+        <p>Sort By</p>
         <button onClick={() => setSortOrder(sortOrder === 'breed:asc' ? 'breed:desc' : 'breed:asc')}>
           {sortOrder === 'breed:asc' ? 'Descending' : 'Ascending'}
         </button>
+      </div>
+
+      <div className="zip-code">
+        <label htmlFor="zipCode">Zip Code</label>
+        <input type="text" name="zipCode" id="zipCode" value={zipCode} maxLength={5}
+               onChange={(e) => setZipCode(e.target.value)} placeholder='ex. 09123' />
       </div>
 
       <div className="favorites">
