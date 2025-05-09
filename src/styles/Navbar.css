@@ -1,15 +1,15 @@
 .navbar {
-  position: fixed;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
   padding: 15px 20px;
-  background-color: #537fa4;
+  position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  z-index: 10;
+  background-color: #537FA4;
   box-shadow: 0 2px 2px 0px rgba(0, 0, 0, 0.5);
+  z-index: 10;
 }
 
 .logo {
@@ -19,20 +19,20 @@
 .logout-btn {
   width: 100px;
   padding: 10px 15px;
+  margin: auto 0;
   font-size: 1em;
   font-weight: bold;
-  background-color: #FFA900;
-  margin: auto 0;
-  color: #ffffff;
-  border: none;
-  cursor: pointer;
   font-size: 16px;
+  color: #FFFFFF;
+  background-color: #FFA900;
+  border: none;
   border-radius: 10px;
   transition: 0.2s;
   box-shadow: 0 2px 2px 0px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
 
 .logout-btn:hover {
-  color: #ffffff;
+  color: #FFFFFF;
   background-color: #ff0000;
 }

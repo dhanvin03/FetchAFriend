@@ -33,18 +33,18 @@
 .favorites button,
 .zip-code input {
   width: 100%;
-  margin-top: 10px;
   height: 40px;
-  border-radius: 10px;
-  font-size: 1em;
+  margin-top: 10px;
   padding: 0px 16px;
-  color: #ffffff;
+  font-size: 1em;
   font-weight: bold;
-  background: #537fa4;
-  cursor: pointer;
+  color: #FFFFFF;
+  background: #537FA4;
   outline: none;
   border: none;
+  border-radius: 10px;
   box-shadow: 0 2px 2px 0px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
 
 .sort-by,
@@ -54,7 +54,7 @@
 }
 
 .zip-code input::placeholder {
-  color: #ffffff;
+  color: #FFFFFF;
 }
 
 .favorites-title {
@@ -69,17 +69,17 @@
 }
 
 .favorites-title .heart {
-  color: #ff0000;
+  color: #FF0000;
 }
 
 .favorites .liked-pets {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 10px 0;
   font-size: medium;
   font-weight: normal;
   list-style: none;
-  margin: 10px 0;
 }
 
 .favorites .liked-pets .trash {
@@ -92,5 +92,5 @@
 }
 
 .favorites button:hover {
-  background-color: #ff0000;
+  background-color: #FF0000;
 }
