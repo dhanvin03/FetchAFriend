@@ -1,0 +1,42 @@
+.search-content {
+  display: flex;
+  flex-direction: row;
+  margin-top: 130px;
+  padding: 0 20px 20px;
+}
+
+.dog-list-wrapper {
+  margin-left: 20px;
+  width: 100%;
+}
+
+.pagination-btn-wrapper {
+  display: flex;
+  justify-content: center;
+  column-gap: 20px;
+}
+
+.pagination-btn,
+.disabled-btn {
+  width: 25%;
+  height: 40px;
+  margin-top: 30px;
+  font-size: 1em;
+  font-weight: bold;
+  color: #ffffff;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #537fa4;
+}
+
+.disabled-btn {
+  opacity: 0.5;
+  cursor: text;
+}
+
+.pagination-btn:hover {
+  color: #000000;
+  background-color: #FFA900;
+}
